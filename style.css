@@ -1,0 +1,923 @@
+/* ========================================
+   TaskFlow — Smart Task Manager
+   Antigravity-Inspired Black & White Theme
+   Premium Minimalist Design
+   ======================================== */
+
+/* ---------- Reset & Base ---------- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Antigravity-Inspired Color Palette */
+    --bg-primary: #f5f5f5;
+    --bg-secondary: #ffffff;
+    --surface: #f0f0f0;
+    --surface-hover: #e8e8e8;
+    --surface-active: #e0e0e0;
+
+    --text-primary: #0a0a0a;
+    --text-secondary: #555555;
+    --text-muted: #999999;
+    --text-inverse: #ffffff;
+
+    --accent-primary: #0a0a0a;
+    --accent-hover: #333333;
+    --accent-light: rgba(0, 0, 0, 0.06);
+
+    --success: #22c55e;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --info: #3b82f6;
+
+    /* Card Styling */
+    --card-bg: #ffffff;
+    --card-border: rgba(0, 0, 0, 0.08);
+    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.06);
+    --card-shadow-hover: 0 2px 8px rgba(0, 0, 0, 0.06), 0 12px 32px rgba(0, 0, 0, 0.1);
+
+    /* Spacing */
+    --radius-sm: 10px;
+    --radius-md: 14px;
+    --radius-lg: 22px;
+    --radius-xl: 28px;
+    --radius-pill: 50px;
+
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.25s ease;
+    --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    overflow-x: hidden;
+}
+
+/* ---------- Background Decorations ---------- */
+.app-container {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+}
+
+.bg-decoration {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.07;
+    animation: floatCircle 25s ease-in-out infinite;
+}
+
+.bg-circle-1 {
+    width: 500px;
+    height: 500px;
+    background: #000000;
+    top: -150px;
+    right: -150px;
+    animation-delay: 0s;
+}
+
+.bg-circle-2 {
+    width: 400px;
+    height: 400px;
+    background: #555555;
+    bottom: -120px;
+    left: -120px;
+    animation-delay: -8s;
+}
+
+.bg-circle-3 {
+    width: 300px;
+    height: 300px;
+    background: #888888;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.04;
+    animation-delay: -16s;
+}
+
+@keyframes floatCircle {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(30px, -20px) scale(1.03);
+    }
+
+    66% {
+        transform: translate(-20px, 20px) scale(0.97);
+    }
+}
+
+/* ---------- App Card ---------- */
+.app-card {
+    position: relative;
+    z-index: 1;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--card-shadow);
+    padding: 40px 32px 28px;
+    animation: slideUp 0.6s var(--transition-smooth);
+    transition: box-shadow var(--transition-normal);
+}
+
+.app-card:hover {
+    box-shadow: var(--card-shadow-hover);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------- Header ---------- */
+.app-header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 6px;
+}
+
+.logo-icon {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    animation: sparkle 4s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+
+    0%,
+    100% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(15deg) scale(1.1);
+    }
+}
+
+.logo h1 {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.8px;
+}
+
+.tagline {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    letter-spacing: 0.2px;
+}
+
+/* ---------- Search Bar ---------- */
+.search-wrapper {
+    position: relative;
+    margin-bottom: 14px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    pointer-events: none;
+    transition: var(--transition-normal);
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 42px 12px 44px;
+    background: var(--surface);
+    border: 1px solid transparent;
+    border-radius: var(--radius-pill);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 400;
+    outline: none;
+    transition: var(--transition-normal);
+}
+
+.search-input::placeholder {
+    color: var(--text-muted);
+}
+
+.search-input:focus {
+    border-color: var(--accent-primary);
+    background: var(--bg-secondary);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+.search-input:focus~.search-icon {
+    color: var(--text-primary);
+}
+
+.search-clear-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-normal);
+}
+
+.search-clear-btn:hover {
+    background: var(--surface-hover);
+    color: var(--text-primary);
+}
+
+/* ---------- Task Input Form ---------- */
+.task-form {
+    margin-bottom: 18px;
+}
+
+.input-wrapper {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.task-input {
+    flex: 1;
+    padding: 14px 20px;
+    background: var(--surface);
+    border: 1px solid transparent;
+    border-radius: var(--radius-pill);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 400;
+    outline: none;
+    transition: var(--transition-normal);
+}
+
+.task-input::placeholder {
+    color: var(--text-muted);
+}
+
+.task-input:focus {
+    border-color: var(--accent-primary);
+    background: var(--bg-secondary);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+.priority-wrapper {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.priority-select {
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 14px 34px 14px 16px;
+    background: var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23666666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") no-repeat right 12px center;
+    border: 1px solid transparent;
+    border-radius: var(--radius-pill);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 500;
+    outline: none;
+    cursor: pointer;
+    transition: var(--transition-normal);
+}
+
+.priority-select:focus {
+    border-color: var(--accent-primary);
+    background-color: var(--bg-secondary);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+.add-btn {
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background: var(--accent-primary);
+    color: var(--text-inverse);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-normal);
+    flex-shrink: 0;
+}
+
+.add-btn:hover {
+    background: var(--accent-hover);
+    transform: scale(1.05);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.add-btn:active {
+    transform: scale(0.95);
+}
+
+/* ---------- Filter Bar ---------- */
+.filter-bar {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 18px;
+    padding: 4px;
+    background: var(--surface);
+    border-radius: var(--radius-pill);
+}
+
+.filter-btn {
+    flex: 1;
+    padding: 10px 14px;
+    border: none;
+    border-radius: var(--radius-pill);
+    background: transparent;
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    letter-spacing: 0.2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.filter-btn:hover {
+    color: var(--text-primary);
+    background: var(--surface-hover);
+}
+
+.filter-btn.active {
+    background: var(--accent-primary);
+    color: var(--text-inverse);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.filter-count {
+    font-size: 0.7rem;
+    padding: 1px 6px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.08);
+    font-weight: 600;
+    min-width: 18px;
+    text-align: center;
+}
+
+.filter-btn.active .filter-count {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* ---------- Task List ---------- */
+.task-list-container {
+    min-height: 120px;
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 16px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.1) transparent;
+}
+
+.task-list-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+.task-list-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.task-list-container::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.task-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* ---------- Task Item ---------- */
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    background: var(--surface);
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+    transition: var(--transition-normal);
+    animation: taskSlideIn 0.3s var(--transition-smooth);
+}
+
+@keyframes taskSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.task-item:hover {
+    background: var(--surface-hover);
+    border-color: var(--card-border);
+}
+
+.task-item.completed {
+    opacity: 0.45;
+}
+
+.task-item.completed .task-text {
+    text-decoration: line-through;
+    color: var(--text-muted);
+}
+
+.task-item.removing {
+    animation: taskSlideOut 0.3s var(--transition-smooth) forwards;
+}
+
+@keyframes taskSlideOut {
+    to {
+        opacity: 0;
+        transform: translateX(20px) scale(0.97);
+    }
+}
+
+/* Custom Checkbox */
+.task-checkbox {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
+.task-checkbox input {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 1;
+    margin: 0;
+}
+
+.checkmark {
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--text-muted);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-normal);
+}
+
+.task-checkbox input:checked+.checkmark {
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
+.checkmark svg {
+    width: 12px;
+    height: 12px;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: var(--transition-fast);
+}
+
+.task-checkbox input:checked+.checkmark svg {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Task Text */
+.task-text {
+    flex: 1;
+    font-size: 0.92rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    line-height: 1.5;
+    transition: var(--transition-normal);
+    word-break: break-word;
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 6px;
+}
+
+.task-text:hover {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+/* Priority Indicator */
+.task-priority {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.priority-low {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--info);
+}
+
+.priority-medium {
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--warning);
+}
+
+.priority-high {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--danger);
+}
+
+/* Edit Input */
+.task-edit-input {
+    flex: 1;
+    padding: 8px 12px;
+    background: var(--bg-secondary);
+    border: 2px solid var(--accent-primary);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.92rem;
+    font-weight: 400;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+/* Task Actions */
+.task-actions {
+    display: flex;
+    gap: 2px;
+    flex-shrink: 0;
+}
+
+/* Edit Button */
+.edit-btn {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-normal);
+    opacity: 0;
+}
+
+.task-item:hover .edit-btn {
+    opacity: 1;
+}
+
+.edit-btn:hover {
+    background: var(--accent-light);
+    color: var(--text-primary);
+}
+
+/* Delete Button */
+.delete-btn {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-normal);
+    flex-shrink: 0;
+    opacity: 0;
+}
+
+.task-item:hover .delete-btn {
+    opacity: 1;
+}
+
+.delete-btn:hover {
+    background: rgba(239, 68, 68, 0.08);
+    color: var(--danger);
+}
+
+/* ---------- Empty State ---------- */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 20px;
+    text-align: center;
+}
+
+.empty-state.hidden {
+    display: none;
+}
+
+.empty-icon {
+    font-size: 2.2rem;
+    margin-bottom: 14px;
+    animation: bounce 2.5s ease-in-out infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+.empty-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+}
+
+.empty-subtitle {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+/* ---------- Footer ---------- */
+.app-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px solid var(--card-border);
+}
+
+.footer-actions {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.task-counter {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+.clear-btn {
+    padding: 7px 16px;
+    border: none;
+    border-radius: var(--radius-pill);
+    background: transparent;
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-normal);
+}
+
+.clear-btn:hover {
+    color: var(--danger);
+    background: rgba(239, 68, 68, 0.06);
+}
+
+/* ---------- Keyboard Shortcuts Hint ---------- */
+.shortcuts-hint {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 16px;
+    padding-top: 14px;
+}
+
+.shortcuts-hint span {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+kbd {
+    padding: 2px 7px;
+    border-radius: 5px;
+    background: var(--surface);
+    border: 1px solid var(--card-border);
+    font-family: inherit;
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* ---------- Toast Notifications ---------- */
+.toast-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    background: var(--accent-primary);
+    border: none;
+    border-radius: var(--radius-pill);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+    font-size: 0.84rem;
+    color: var(--text-inverse);
+    pointer-events: auto;
+    animation: toastSlideIn 0.4s var(--transition-smooth);
+    max-width: 340px;
+}
+
+.toast.removing {
+    animation: toastSlideOut 0.3s var(--transition-smooth) forwards;
+}
+
+@keyframes toastSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(16px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes toastSlideOut {
+    to {
+        opacity: 0;
+        transform: translateY(16px) scale(0.95);
+    }
+}
+
+.toast-icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.toast-message {
+    flex: 1;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+/* Toast types — all use dark pill style */
+.toast.toast-success,
+.toast.toast-danger,
+.toast.toast-info,
+.toast.toast-warning {
+    background: var(--accent-primary);
+    border-left: none;
+}
+
+/* ---------- Credit ---------- */
+.credit {
+    text-align: center;
+    font-size: 0.73rem;
+    color: var(--text-muted);
+    margin-top: 24px;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 0.3px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 480px) {
+    body {
+        padding: 12px;
+        align-items: flex-start;
+        padding-top: 20px;
+    }
+
+    .app-card {
+        padding: 28px 20px 22px;
+        border-radius: var(--radius-lg);
+    }
+
+    .logo h1 {
+        font-size: 1.4rem;
+    }
+
+    .task-input {
+        padding: 12px 16px;
+        font-size: 0.9rem;
+    }
+
+    .add-btn {
+        width: 44px;
+        height: 44px;
+    }
+
+    .task-item {
+        padding: 12px 14px;
+    }
+
+    .delete-btn,
+    .edit-btn {
+        opacity: 1;
+    }
+
+    .task-list-container {
+        max-height: 350px;
+    }
+
+    .toast-container {
+        bottom: 12px;
+        right: 12px;
+        left: 12px;
+    }
+
+    .toast {
+        max-width: 100%;
+    }
+
+    .shortcuts-hint {
+        display: none;
+    }
+}
+
+/* Responsive design improvements - v1.1 */

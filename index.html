@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="TaskFlow — A modern, elegant task manager application to organize your daily tasks efficiently.">
+    <title>TaskFlow — Smart Task Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230a0a0a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='4' width='14' height='17' rx='2' ry='2'/%3E%3Cpath d='M12 2L9 5h6L12 2z'/%3E%3Ccircle cx='12' cy='2.5' r='.8' fill='%230a0a0a'/%3E%3Cpolyline points='10 13 11.5 15 14.5 11' stroke-width='1.8'/%3E%3Crect x='7.5' y='8' width='9' height='9' rx='1' ry='1'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Background Decorations -->
+        <div class="bg-decoration">
+            <div class="bg-circle bg-circle-1"></div>
+            <div class="bg-circle bg-circle-2"></div>
+            <div class="bg-circle bg-circle-3"></div>
+        </div>
+
+        <!-- Main App Card -->
+        <main class="app-card">
+            <!-- Header -->
+            <header class="app-header">
+                <div class="logo">
+                    <span class="logo-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <!-- Clipboard body -->
+                            <rect x="5" y="4" width="14" height="17" rx="2" ry="2"></rect>
+                            <!-- Clipboard clip (triangle top) -->
+                            <path d="M12 2L9 5h6L12 2z"></path>
+                            <circle cx="12" cy="2.5" r="0.8" fill="currentColor"></circle>
+                            <!-- Inner paper area -->
+                            <rect x="7.5" y="8" width="9" height="9" rx="1" ry="1"></rect>
+                            <!-- Checkmark inside -->
+                            <polyline points="10 13 11.5 15 14.5 11" stroke-width="1.8"></polyline>
+                        </svg>
+                    </span>
+                    <h1>TaskFlow</h1>
+                </div>
+                <p class="tagline">Organize your day, achieve your goals</p>
+            </header>
+
+            <!-- Search Bar -->
+            <div class="search-wrapper">
+                <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" class="search-input" placeholder="Search tasks..."
+                    autocomplete="off">
+                <button id="search-clear-btn" class="search-clear-btn" aria-label="Clear search" style="display: none;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Task Input Form -->
+            <form id="task-form" class="task-form">
+                <div class="input-wrapper">
+                    <input type="text" id="task-input" class="task-input" placeholder="" autocomplete="off">
+                    <div class="priority-wrapper">
+                        <select id="priority-select" class="priority-select" aria-label="Task priority">
+                            <option value="low">Low</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="add-btn" aria-label="Add task">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Filter Buttons -->
+            <nav class="filter-bar">
+                <button class="filter-btn active" data-filter="all" id="filter-all">
+                    All
+                    <span class="filter-count" id="count-all">0</span>
+                </button>
+                <button class="filter-btn" data-filter="active" id="filter-active">
+                    Active
+                    <span class="filter-count" id="count-active">0</span>
+                </button>
+                <button class="filter-btn" data-filter="completed" id="filter-completed">
+                    Completed
+                    <span class="filter-count" id="count-completed">0</span>
+                </button>
+            </nav>
+
+            <!-- Task List -->
+            <section class="task-list-container">
+                <ul id="task-list" class="task-list" aria-label="Task list"></ul>
+
+                <!-- Empty State -->
+                <div id="empty-state" class="empty-state">
+                    <div class="empty-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"
+                            style="color: var(--text-muted);">
+                            <rect x="5" y="4" width="14" height="17" rx="2" ry="2"></rect>
+                            <path d="M12 2L9 5h6L12 2z"></path>
+                            <circle cx="12" cy="2.5" r="0.7" fill="currentColor"></circle>
+                            <line x1="9" y1="10" x2="15" y2="10"></line>
+                            <line x1="9" y1="14" x2="13" y2="14"></line>
+                        </svg>
+                    </div>
+                    <p class="empty-title">No tasks yet</p>
+                    <p class="empty-subtitle">Add a task above to get started!</p>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="app-footer">
+                <span id="task-counter" class="task-counter">0 tasks remaining</span>
+                <div class="footer-actions">
+                    <button id="export-btn" class="clear-btn" aria-label="Export tasks to JSON">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            style="margin-right:4px; vertical-align:middle;">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Export
+                    </button>
+                    <label for="import-input" class="clear-btn" style="cursor:pointer; display:inline-block;"
+                        aria-label="Import tasks from JSON">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            style="margin-right:4px; vertical-align:middle;">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        Import
+                    </label>
+                    <input type="file" id="import-input" accept=".json" style="display:none;">
+                    <button id="clear-completed-btn" class="clear-btn">Clear completed</button>
+                </div>
+            </footer>
+
+            <!-- Keyboard Shortcuts Hint -->
+            <div class="shortcuts-hint">
+                <span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                        style="vertical-align:middle; margin-right:2px;">
+                        <rect x="2" y="4" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="6" y1="8" x2="6" y2="8"></line>
+                        <line x1="10" y1="8" x2="10" y2="8"></line>
+                        <line x1="14" y1="8" x2="14" y2="8"></line>
+                        <line x1="18" y1="8" x2="18" y2="8"></line>
+                        <line x1="6" y1="12" x2="6" y2="12"></line>
+                        <line x1="10" y1="12" x2="10" y2="12"></line>
+                        <line x1="14" y1="12" x2="14" y2="12"></line>
+                        <line x1="18" y1="12" x2="18" y2="12"></line>
+                        <line x1="8" y1="16" x2="16" y2="16"></line>
+                    </svg> <kbd>Enter</kbd> add</span>
+                <span><kbd>Esc</kbd> cancel edit</span>
+            </div>
+        </main>
+
+        <!-- Credit -->
+        <p class="credit">Built with <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                fill="#ef4444" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                style="vertical-align: -2px;">
+                <path
+                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                </path>
+            </svg> by Team TaskFlow</p>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
