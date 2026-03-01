@@ -1,7 +1,7 @@
 # TaskFlow — Smart Task Manager
 
 > A modern, elegant task management web application built with **vanilla HTML, CSS, and JavaScript**.  
-> Designed with a premium black & white aesthetic inspired by [antigravity.google](https://antigravity.google).
+> Designed with a premium black & white.
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
