@@ -56,7 +56,7 @@
 ### UX & Design
 | Feature | Description |
 |---|---|
-| **Premium B&W Theme** | Minimalist black & white design inspired by antigravity.google |
+| **Premium B&W Theme** | Minimalist black & white design |
 | **SVG Icons** | All icons are crisp, scalable SVGs (no emoji dependencies) |
 | **Toast Notifications** | Dark pill notifications for every action |
 | **Keyboard Shortcuts** | `Enter` to add, `Escape` to cancel, `Ctrl+K` to search |
