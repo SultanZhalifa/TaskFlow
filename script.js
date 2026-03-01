@@ -952,3 +952,5 @@ function init() {
 
 // Start the app when DOM is ready
 document.addEventListener('DOMContentLoaded', init);
+
+// Task rendering and form handling - v1.1
