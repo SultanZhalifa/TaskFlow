@@ -954,3 +954,5 @@ function init() {
 document.addEventListener('DOMContentLoaded', init);
 
 // Task rendering and form handling - v1.1
+
+// Task counter and clear completed - v1.2
