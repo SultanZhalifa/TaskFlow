@@ -964,3 +964,5 @@ document.addEventListener('DOMContentLoaded', init);
 // localStorage persistence for tasks - v2.2
 
 // Real-time search with text highlighting and clear button - v3.0
+
+// Inline task editing with double-click and edit button - v3.1
