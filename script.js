@@ -966,3 +966,5 @@ document.addEventListener('DOMContentLoaded', init);
 // Real-time search with text highlighting and clear button - v3.0
 
 // Inline task editing with double-click and edit button - v3.1
+
+// Toast notifications and keyboard shortcuts - v3.2
