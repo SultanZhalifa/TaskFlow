@@ -958,3 +958,5 @@ document.addEventListener('DOMContentLoaded', init);
 // Task counter and clear completed - v1.2
 
 // Toggle complete and delete task with animations - v2.0
+
+// Task filtering: All, Active, Completed with live count badges - v2.1
