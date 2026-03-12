@@ -32,7 +32,7 @@
 |---|---|
 | **tambah task** | tambahin task baru lewat form input yang simpel |
 | **selesaikan task** | centang task yang udah kelar, ada animasi checkboxnya |
-| **edit task** | double-click atau pencet tombol edit buat ubah teks task |
+| **edit task** | double click atau pencet tombol edit buat ubah teks task |
 | **hapus task** | hapus task pake animasi slide-out |
 | **deteksi duplikat** | gak bisa nambahin task yang sama dua kali |
 
