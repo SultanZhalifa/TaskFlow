@@ -1,10 +1,6 @@
-# contributing to taskflow
-
-makasih udah mau kontribusi ke **taskflow**! ini panduan singkatnya.
+# taskflow
 
 ---
-
-## cara kontribusi
 
 ### 1. fork & clone
 ```bash
