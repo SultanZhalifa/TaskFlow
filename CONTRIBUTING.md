@@ -1,100 +1,100 @@
-# Contributing to TaskFlow
+# contributing to taskflow
 
-Thank you for your interest in contributing to **TaskFlow**! This document provides guidelines for contributing to the project.
+makasih udah mau kontribusi ke **taskflow**! ini panduan singkatnya.
 
 ---
 
-## 📋 How to Contribute
+## cara kontribusi
 
-### 1. Fork & Clone
+### 1. fork & clone
 ```bash
 git clone https://github.com/Sultan-skibidi/TaskFlow.git
 cd TaskFlow
 ```
 
-### 2. Create a Branch
-Always create a new branch for your work:
+### 2. bikin branch
+selalu bikin branch baru buat kerjain fitur:
 ```bash
-git checkout -b feature-your-feature-name
+git checkout -b feature-nama-fitur-kamu
 ```
 
-**Branch naming convention:**
-- `feature-*` for new features (e.g., `feature-dark-mode`)
-- `fix-*` for bug fixes (e.g., `fix-task-counter`)
-- `docs-*` for documentation changes (e.g., `docs-update-readme`)
+**format penamaan branch:**
+- `feature-*` buat fitur baru (contoh: `feature-dark-mode`)
+- `fix-*` buat bug fix (contoh: `fix-task-counter`)
+- `docs-*` buat perubahan dokumentasi (contoh: `docs-update-readme`)
 
-### 3. Make Changes
-- Write clean, readable code
-- Follow existing code style and conventions
-- Add comments for complex logic
-- Test your changes in multiple browsers
+### 3. kerjain perubahannya
+- tulis kode yang rapi dan gampang dibaca
+- ikutin code style yang udah ada
+- tambahin komentar buat logika yang agak ribet
+- test di beberapa browser
 
-### 4. Commit Guidelines
-Write clear, descriptive commit messages:
+### 4. panduan commit
+tulis commit message yang jelas:
 
-**Good examples:**
+**contoh yang bagus:**
 - `Add search functionality with text highlighting`
 - `Fix task counter not updating after delete`
 - `Update README with installation instructions`
 
-**Bad examples:**
+**contoh yang jelek:**
 - `update`
 - `fix stuff`
 - `asdfgh`
 
-### 5. Push & Create PR
+### 5. push & bikin pr
 ```bash
-git push -u origin feature-your-feature-name
+git push -u origin feature-nama-fitur-kamu
 ```
-Then create a **Pull Request** on GitHub with:
-- A clear title describing your changes
-- A description of what you changed and why
-- Screenshots if you changed the UI
+terus bikin **pull request** di github:
+- kasih judul yang jelas
+- jelasin apa yang diubah dan kenapa
+- tambahin screenshot kalo ada perubahan ui
 
 ---
 
-## 🧪 Testing
+## testing
 
-Before submitting your PR, make sure to:
+sebelum submit pr, pastiin:
 
-1. Open `index.html` in your browser
-2. Test all existing features still work (add, complete, delete, filter, search)
-3. Test your new feature thoroughly
-4. Check responsiveness on mobile viewport
-5. Verify data persists after page refresh (localStorage)
+1. buka `index.html` di browser
+2. test semua fitur yang udah ada masih jalan (add, complete, delete, filter, search)
+3. test fitur baru yang ditambahin
+4. cek tampilannya di viewport hp
+5. pastiin data masih ada setelah refresh (localstorage)
 
 ---
 
-## 📁 Project Structure
+## struktur project
 
 ```
 TaskFlow/
-├── index.html     # HTML structure
-├── style.css      # All styles and animations
-├── script.js      # Application logic
-├── README.md      # Project documentation
-└── .gitignore     # Git ignore rules
+├── index.html     # struktur html
+├── style.css      # semua style dan animasi
+├── script.js      # logika app
+├── README.md      # dokumentasi project
+└── .gitignore     # git ignore rules
 ```
 
 ---
 
-## 🎨 Code Style
+## code style
 
-- **HTML**: Use semantic elements, proper indentation (4 spaces)
-- **CSS**: Use CSS variables from `:root`, follow BEM-like naming
-- **JavaScript**: Use JSDoc comments, `const`/`let` (no `var`), descriptive function names
+- **html**: pake elemen semantik, indentasi 4 spasi
+- **css**: pake css variables dari `:root`, penamaan mirip bem
+- **javascript**: pake jsdoc comments, `const`/`let` (gak pake `var`), nama fungsi yang deskriptif
 
 ---
 
-## 👥 Team Members
+## anggota tim
 
-| NIM | Name | Role |
+| nim | nama | peran |
 |---|---|---|
-| 001202400200 | Sultan Zhalifunnas Musyaffa | Project Lead & Core Features |
-| 001202400069 | Risly Maria Theresia Worung | UI/UX Design |
-| 001202400040 | Misha Andalusia | Task Features |
-| 001202400054 | Fathir Barhouti Awlya | Search & Storage |
+| 001202400200 | sultan zhalifunnas musyaffa | project lead & core features |
+| 001202400069 | risly maria theresia worung | ui/ux design |
+| 001202400040 | misha andalusia | task features |
+| 001202400054 | fathir barhouti awlya | search & storage |
 
 ---
 
-Thank you for contributing! 🚀
+makasih udah kontribusi!

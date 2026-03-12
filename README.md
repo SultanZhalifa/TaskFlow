@@ -1,7 +1,7 @@
-# TaskFlow — Smart Task Manager
+# taskflow — smart task manager
 
-> A modern, elegant task management web application built with **vanilla HTML, CSS, and JavaScript**.  
-> Designed with a premium black & white.
+> aplikasi web task manager pake vanilla html, css, sama javascript.
+> desainnya minimalist hitam putih.
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
@@ -10,191 +10,191 @@
 
 ---
 
-## Table of Contents
+## daftar isi
 
-- [Features](#-features)
-- [Demo](#-demo)
-- [Getting Started](#-getting-started)
-- [Technologies Used](#-technologies-used)
-- [Project Structure](#-project-structure)
-- [Keyboard Shortcuts](#-keyboard-shortcuts)
-- [Team Members](#-team-members)
-- [Git Workflow](#-git-workflow)
-- [Contributing](#-contributing)
-- [License](#-license)
-
----
-
-## Features
-
-### Core Features
-| Feature | Description |
-|---|---|
-| **Add Tasks** | Quickly add new tasks with an intuitive input form |
-| **Complete Tasks** | Toggle tasks as done with a satisfying checkbox animation |
-| **Edit Tasks** | Double-click or press edit button to modify task text inline |
-| **Delete Tasks** | Remove tasks with smooth slide-out animation |
-| **Duplicate Detection** | Prevents adding the same task twice |
-
-### Search & Filter
-| Feature | Description |
-|---|---|
-| **Real-time Search** | Instant search with text highlighting |
-| **Filter Tasks** | View All, Active, or Completed tasks with live count badges |
-| **Task Counter** | Live count of remaining active tasks |
-| **Clear Completed** | Bulk remove all finished tasks |
-
-### Advanced Features
-| Feature | Description |
-|---|---|
-| **Task Priority** | Assign Low, Medium, or High priority with color-coded badges |
-| **Drag & Drop Sorting** | Reorder tasks by dragging with visual handle |
-| **Export to JSON** | Download all tasks as a `.json` backup file |
-| **Import from JSON** | Restore tasks from a previously exported `.json` file |
-| **Animated Placeholder** | Typewriter effect on the input field with rotating suggestions |
-
-### UX & Design
-| Feature | Description |
-|---|---|
-| **Premium B&W Theme** | Minimalist black & white design |
-| **SVG Icons** | All icons are crisp, scalable SVGs (no emoji dependencies) |
-| **Toast Notifications** | Dark pill notifications for every action |
-| **Keyboard Shortcuts** | `Enter` to add, `Escape` to cancel, `Ctrl+K` to search |
-| **Local Storage** | Data persists across browser sessions |
-| **Responsive Design** | Works beautifully on desktop, tablet, and mobile |
-| **Smooth Animations** | Micro-animations for task add, delete, and transitions |
+- [fitur](#fitur)
+- [demo](#demo)
+- [cara mulai](#cara-mulai)
+- [teknologi](#teknologi)
+- [struktur project](#struktur-project)
+- [keyboard shortcuts](#keyboard-shortcuts)
+- [anggota tim](#anggota-tim)
+- [git workflow](#git-workflow)
+- [contributing](#contributing)
+- [license](#license)
 
 ---
 
-## Demo
+## fitur
 
-To run the app locally, simply open `index.html` in your browser. No server or installation required!
+### fitur utama
+| fitur | keterangan |
+|---|---|
+| **tambah task** | tambahin task baru lewat form input yang simpel |
+| **selesaikan task** | centang task yang udah kelar, ada animasi checkboxnya |
+| **edit task** | double-click atau pencet tombol edit buat ubah teks task |
+| **hapus task** | hapus task pake animasi slide-out |
+| **deteksi duplikat** | gak bisa nambahin task yang sama dua kali |
+
+### search & filter
+| fitur | keterangan |
+|---|---|
+| **search realtime** | langsung ketemu pas ngetik, ada highlightnya |
+| **filter task** | tampilkan semua, aktif, atau yang udah kelar |
+| **task counter** | hitungan jumlah task yang masih aktif |
+| **clear completed** | hapus semua task yang udah selesai sekaligus |
+
+### fitur tambahan
+| fitur | keterangan |
+|---|---|
+| **task priority** | set prioritas low, medium, high — ada badge warnanya |
+| **drag & drop** | atur urutan task pake drag, ada handle visualnya |
+| **export ke json** | download semua task jadi file `.json` |
+| **import dari json** | restore task dari file `.json` yang udah di-export |
+| **animated placeholder** | efek typewriter di input field, teksnya ganti-ganti |
+
+### ux & desain
+| fitur | keterangan |
+|---|---|
+| **tema b&w** | desain hitam putih yang clean |
+| **svg icons** | semua ikon pake svg, jadi tajam di semua resolusi |
+| **toast notifications** | notifikasi dark pill buat setiap aksi |
+| **keyboard shortcuts** | `enter` buat nambah, `escape` buat cancel, `ctrl+k` buat search |
+| **local storage** | data tetep ada walaupun browser ditutup |
+| **responsive** | tampilannya bagus di desktop, tablet, sama hp |
+| **animasi halus** | micro-animations buat transisi task |
 
 ---
 
-## Getting Started
+## demo
 
-### Prerequisites
+buat jalanin appnya, tinggal buka `index.html` di browser. gak perlu server atau install apa-apa.
 
-- A modern web browser (Chrome, Firefox, Edge, Safari)
-- No server or dependencies required!
+---
 
-### Installation
+## cara mulai
 
-1. Clone this repository:
+### prasyarat
+
+- browser modern (chrome, firefox, edge, safari)
+- gak perlu server atau dependencies
+
+### instalasi
+
+1. clone repo ini:
    ```bash
    git clone https://github.com/Sultan-skibidi/TaskFlow.git
    ```
 
-2. Navigate to the project folder:
+2. masuk ke folder project:
    ```bash
    cd TaskFlow
    ```
 
-3. Open `index.html` in your browser:
+3. buka `index.html` di browser:
    ```bash
-   # Windows
+   # windows
    start index.html
 
-   # macOS
+   # macos
    open index.html
 
-   # Or use Live Server extension in VS Code
+   # atau pake live server extension di vs code
    ```
 
 ---
 
-## Technologies Used
+## teknologi
 
-| Technology | Purpose |
+| teknologi | fungsi |
 |---|---|
-| **HTML5** | Semantic page structure & accessibility |
-| **CSS3** | Styling, animations, responsive design, CSS variables |
-| **JavaScript (ES6+)** | Application logic, DOM manipulation, Drag & Drop API |
-| **localStorage API** | Client-side data persistence |
-| **FileReader API** | Import/Export JSON functionality |
-| **Google Fonts (Inter)** | Modern, clean typography |
+| **html5** | struktur halaman & aksesibilitas |
+| **css3** | styling, animasi, responsive, css variables |
+| **javascript (es6+)** | logika app, dom manipulation, drag & drop api |
+| **localstorage api** | nyimpen data di sisi client |
+| **filereader api** | fungsi import/export json |
+| **google fonts (inter)** | tipografi yang clean |
 
-> **Note:** This project uses **zero external libraries or frameworks** — everything is built from scratch with vanilla web technologies.
+> project ini gak pake library atau framework eksternal sama sekali — semuanya vanilla.
 
 ---
 
-## Project Structure
+## struktur project
 
 ```
 TaskFlow/
-├── index.html         # Main HTML page structure
-├── style.css          # All styles, themes, and animations
-├── script.js          # Application logic (CRUD, search, filter, D&D, export/import)
-├── .gitignore         # Git ignore rules
-├── CONTRIBUTING.md    # Contribution guidelines
-├── GIT_GUIDE.md       # Step-by-step Git workflow guide (Bahasa Indonesia)
-└── README.md          # Project documentation (this file)
+├── index.html         # struktur html utama
+├── style.css          # semua style, tema, dan animasi
+├── script.js          # logika app (crud, search, filter, d&d, export/import)
+├── .gitignore         # git ignore rules
+├── CONTRIBUTING.md    # panduan kontribusi
+├── GIT_GUIDE.md       # panduan git workflow (bahasa indonesia)
+└── README.md          # dokumentasi project (file ini)
 ```
 
 ---
 
-## Keyboard Shortcuts
+## keyboard shortcuts
 
-| Shortcut | Action |
+| shortcut | aksi |
 |---|---|
-| `Enter` | Add a new task / Save edited task |
-| `Escape` | Cancel editing / Clear search |
-| `Ctrl + K` | Focus search bar |
-| `Double-click` | Edit a task inline |
+| `enter` | tambahin task baru / save task yang diedit |
+| `escape` | cancel editing / clear search |
+| `ctrl + k` | fokus ke search bar |
+| `double-click` | edit task secara inline |
 
 ---
 
-## Team Members & Task Assignments
+## anggota tim & pembagian tugas
 
-| NIM | Name | Role | Branch |
+| nim | nama | peran | branch |
 |---|---|---|---|
-| 001202400200 | Sultan Zhalifunnas Musyaffa | Project Lead & Advanced Features | `main`, `feature-super-maximal` |
-| 001202400069 | Risly Maria Theresia Worung | UI/UX Design (Antigravity B&W Theme) | `feature-ui-design` |
-| 001202400040 | Misha Andalusia | Core JS Logic & Drag/Drop | `feature-add-task` |
-| 001202400054 | Fathir Barhouti Awlya | Task Actions & Animated Placeholder | `feature-task-actions` |
+| 001202400200 | sultan zhalifunnas musyaffa | project lead & fitur lanjutan | `main`, `feature-super-maximal` |
+| 001202400069 | risly maria theresia worung | ui/ux design (tema b&w) | `feature-ui-design` |
+| 001202400040 | misha andalusia | logika js utama & drag/drop | `feature-add-task` |
+| 001202400054 | fathir barhouti awlya | task actions & animated placeholder | `feature-task-actions` |
 
 ---
 
-## Git Workflow
+## git workflow
 
-This project follows a **feature-branch workflow** with Pull Requests and Code Reviews:
+project ini pake **feature-branch workflow** dengan pull requests dan code review:
 
-1. **Main Branch** — Production-ready code
-2. **Feature Branches** — Each feature is developed in isolation
-3. **Pull Requests** — Features are reviewed and merged via PRs
-4. **Code Reviews** — Team members review and approve each other's code
+1. **main branch** — kode yang udah production-ready
+2. **feature branches** — tiap fitur dikerjain terpisah
+3. **pull requests** — fitur di-review terus di-merge lewat pr
+4. **code reviews** — anggota tim saling review kode masing-masing
 
-### Branch History
+### branch history
 
 ```
 main
-├── feature-ui-design        ← HTML structure & Antigravity B&W CSS (Risly)
-├── feature-add-task         ← Add task, render DOM, Drag & Drop (Misha)
-├── feature-task-actions     ← Edit, complete, delete, search, placeholder (Fathir)
-└── feature-super-maximal    ← Priority, Export/Import, advanced features (Sultan)
+├── feature-ui-design        <- struktur html & css tema b&w (risly)
+├── feature-add-task         <- add task, render dom, drag & drop (misha)
+├── feature-task-actions     <- edit, complete, delete, search, placeholder (fathir)
+└── feature-super-maximal    <- priority, export/import, fitur lanjutan (sultan)
 ```
 
-> For a detailed step-by-step guide on the Git workflow (in Bahasa Indonesia), see [`GIT_GUIDE.md`](GIT_GUIDE.md).
+> buat panduan git step-by-step (bahasa indonesia), cek [`GIT_GUIDE.md`](GIT_GUIDE.md).
 
 ---
 
-## Contributing
+## contributing
 
-Please read our [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on:
-- Branch naming conventions
-- Commit message format
-- Testing requirements
-- Code style
+baca [CONTRIBUTING.md](CONTRIBUTING.md) buat panduan soal:
+- penamaan branch
+- format commit message
+- testing
+- code style
 
 ---
 
-## License
+## license
 
-This project is created for educational purposes as part of a university assignment.
+project ini dibuat buat keperluan tugas kuliah.
 
 ---
 
 <p align="center">
-  Built with ♥ by <b>Team TaskFlow</b>
+  dibuat sama <b>tim taskflow</b>
 </p>
