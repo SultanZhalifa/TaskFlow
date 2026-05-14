@@ -25,5 +25,5 @@ npm-debug.log*
 dist/
 build/
 
-# Guide file (not part of the project)
-GIT_GUIDE.md
+# Test coverage
+coverage/

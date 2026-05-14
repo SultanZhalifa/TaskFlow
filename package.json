@@ -1,0 +1,20 @@
+{
+    "name": "taskflow",
+    "version": "1.0.0",
+    "description": "A client-side task manager built with vanilla HTML, CSS, and JavaScript",
+    "type": "module",
+    "scripts": {
+        "test": "vitest run",
+        "test:watch": "vitest",
+        "lint": "eslint script.js taskUtils.js script.test.js",
+        "lint:fix": "eslint script.js taskUtils.js script.test.js --fix",
+        "format": "prettier --write \"*.{js,css,html,json,md}\"",
+        "format:check": "prettier --check \"*.{js,css,html,json,md}\""
+    },
+    "devDependencies": {
+        "eslint": "^8.57.0",
+        "prettier": "^3.3.0",
+        "vitest": "^1.6.0"
+    },
+    "license": "MIT"
+}
