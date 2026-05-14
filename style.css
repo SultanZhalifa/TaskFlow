@@ -189,19 +189,8 @@ body {
 .logo-icon {
     font-size: 1.4rem;
     color: var(--text-primary);
-    animation: sparkle 4s ease-in-out infinite;
-}
-
-@keyframes sparkle {
-
-    0%,
-    100% {
-        transform: rotate(0deg) scale(1);
-    }
-
-    50% {
-        transform: rotate(15deg) scale(1.1);
-    }
+    display: flex;
+    align-items: center;
 }
 
 .logo h1 {
@@ -845,14 +834,11 @@ kbd {
     line-height: 1.3;
 }
 
-/* Toast types — all use dark pill style */
-.toast.toast-success,
-.toast.toast-danger,
-.toast.toast-info,
-.toast.toast-warning {
-    background: var(--accent-primary);
-    border-left: none;
-}
+/* Toast types — colored left border for visual differentiation */
+.toast-success { border-left: 3px solid var(--success); }
+.toast-danger { border-left: 3px solid var(--danger); }
+.toast-warning { border-left: 3px solid var(--warning); }
+.toast-info { border-left: 3px solid var(--info); }
 
 /* ---------- Credit ---------- */
 .credit {
@@ -863,6 +849,93 @@ kbd {
     position: relative;
     z-index: 1;
     letter-spacing: 0.3px;
+}
+
+/* ---------- Drag Handle ---------- */
+.drag-handle {
+    cursor: grab;
+    color: var(--text-muted);
+    opacity: 0.4;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    transition: opacity var(--transition-fast);
+    user-select: none;
+}
+
+.task-item:hover .drag-handle {
+    opacity: 0.65;
+}
+
+.task-item.dragging {
+    opacity: 0.35;
+}
+
+.task-item.drag-above {
+    border-top: 2px solid var(--accent-primary) !important;
+}
+
+.task-item.drag-below {
+    border-bottom: 2px solid var(--accent-primary) !important;
+}
+
+/* ---------- Search Highlight ---------- */
+mark.search-highlight {
+    background: rgba(0, 0, 0, 0.12);
+    color: inherit;
+    border-radius: 2px;
+    padding: 0 2px;
+}
+
+/* ---------- Edit Mode Hint ---------- */
+.edit-hint {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.edit-hint span {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* ---------- Dark Mode ---------- */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-primary: #111111;
+        --bg-secondary: #1a1a1a;
+        --surface: #1e1e1e;
+        --surface-hover: #262626;
+        --surface-active: #2e2e2e;
+
+        --text-primary: #f0f0f0;
+        --text-secondary: #a0a0a0;
+        --text-muted: #5a5a5a;
+        --text-inverse: #111111;
+
+        --accent-primary: #f0f0f0;
+        --accent-hover: #d4d4d4;
+        --accent-light: rgba(255, 255, 255, 0.08);
+
+        --card-bg: #1a1a1a;
+        --card-border: rgba(255, 255, 255, 0.08);
+        --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.4);
+        --card-shadow-hover: 0 2px 8px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.5);
+    }
+
+    .bg-circle-1,
+    .bg-circle-2,
+    .bg-circle-3 {
+        background: #ffffff;
+        opacity: 0.03;
+    }
+
+    mark.search-highlight {
+        background: rgba(255, 255, 255, 0.15);
+    }
 }
 
 /* ---------- Responsive ---------- */
@@ -920,4 +993,3 @@ kbd {
     }
 }
 
-/* Responsive design improvements - v1.1 */

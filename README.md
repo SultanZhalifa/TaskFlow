@@ -1,200 +1,142 @@
-# taskflow — smart task manager
+# TaskFlow
 
-> aplikasi web task manager pake vanilla html, css, sama javascript.
-> desainnya minimalist hitam putih.
+A client-side task manager built with vanilla HTML, CSS, and JavaScript. No frameworks, no build step, no dependencies.
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
+![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
 ---
 
-## daftar isi
+## Overview
 
-- [fitur](#fitur)
-- [demo](#demo)
-- [cara mulai](#cara-mulai)
-- [teknologi](#teknologi)
-- [struktur project](#struktur-project)
-- [keyboard shortcuts](#keyboard-shortcuts)
-- [anggota tim](#anggota-tim)
-- [git workflow](#git-workflow)
-- [contributing](#contributing)
-- [license](#license)
+TaskFlow is a browser-based task manager focused on simplicity and usability. Tasks persist across sessions using `localStorage` — no backend, no account required.
+
+The goal was to build something genuinely useful using only the web platform: no React, no npm packages, no bundler.
 
 ---
 
-## fitur
+## Features
 
-### fitur utama
-| fitur | keterangan |
+**Task management**
+- Add, complete, edit, and delete tasks
+- Priority levels: low, medium, high
+- Duplicate detection on task creation
+
+**Organization**
+- Filter by All / Active / Completed
+- Real-time search with text highlighting
+- Drag and drop reordering
+
+**Data**
+- Persistent storage via `localStorage`
+- Export tasks to JSON
+- Import tasks from a JSON backup
+
+**UI**
+- Responsive layout for mobile and desktop
+- Dark mode via `prefers-color-scheme`
+- Toast notifications for user feedback
+- Keyboard shortcuts
+
+---
+
+## Tech stack
+
+| | |
 |---|---|
-| **tambah task** | tambahin task baru lewat form input yang simpel |
-| **selesaikan task** | centang task yang udah kelar, ada animasi checkboxnya |
-| **edit task** | double click atau pencet tombol edit buat ubah teks task |
-| **hapus task** | hapus task pake animasi slide-out |
-| **deteksi duplikat** | gak bisa nambahin task yang sama dua kali |
-
-### search & filter
-| fitur | keterangan |
-|---|---|
-| **search realtime** | langsung ketemu pas ngetik, ada highlightnya |
-| **filter task** | tampilkan semua, aktif, atau yang udah kelar |
-| **task counter** | hitungan jumlah task yang masih aktif |
-| **clear completed** | hapus semua task yang udah selesai sekaligus |
-
-### fitur tambahan
-| fitur | keterangan |
-|---|---|
-| **task priority** | set prioritas low, medium, high — ada badge warnanya |
-| **drag & drop** | atur urutan task pake drag, ada handle visualnya |
-| **export ke json** | download semua task jadi file `.json` |
-| **import dari json** | restore task dari file `.json` yang udah di-export |
-| **animated placeholder** | efek typewriter di input field, teksnya ganti-ganti |
-
-### ux & desain
-| fitur | keterangan |
-|---|---|
-| **tema b&w** | desain hitam putih yang clean |
-| **svg icons** | semua ikon pake svg, jadi tajam di semua resolusi |
-| **toast notifications** | notifikasi dark pill buat setiap aksi |
-| **keyboard shortcuts** | `enter` buat nambah, `escape` buat cancel, `ctrl+k` buat search |
-| **local storage** | data tetep ada walaupun browser ditutup |
-| **responsive** | tampilannya bagus di desktop, tablet, sama hp |
-| **animasi halus** | micro-animations buat transisi task |
+| HTML5 | Structure and accessibility |
+| CSS3 | Styling, animations, CSS custom properties |
+| JavaScript ES6+ | App logic, DOM, Drag & Drop API |
+| localStorage API | Client-side persistence |
+| FileReader API | JSON import/export |
+| Google Fonts (Inter) | Typography |
 
 ---
 
-## demo
+## Getting started
 
-buat jalanin appnya, tinggal buka `index.html` di browser. gak perlu server atau install apa-apa.
+Clone the repository and open `index.html` in any modern browser:
 
----
-
-## cara mulai
-
-### prasyarat
-
-- browser modern (chrome, firefox, edge, safari)
-- gak perlu server atau dependencies
-
-### instalasi
-
-1. clone repo ini:
-   ```bash
-   git clone https://github.com/Sultan-skibidi/TaskFlow.git
-   ```
-
-2. masuk ke folder project:
-   ```bash
-   cd TaskFlow
-   ```
-
-3. buka `index.html` di browser:
-   ```bash
-   # windows
-   start index.html
-
-   # macos
-   open index.html
-
-   # atau pake live server extension di vs code
-   ```
-
----
-
-## teknologi
-
-| teknologi | fungsi |
-|---|---|
-| **html5** | struktur halaman & aksesibilitas |
-| **css3** | styling, animasi, responsive, css variables |
-| **javascript (es6+)** | logika app, dom manipulation, drag & drop api |
-| **localstorage api** | nyimpen data di sisi client |
-| **filereader api** | fungsi import/export json |
-| **google fonts (inter)** | tipografi yang clean |
-
-> project ini gak pake library atau framework eksternal sama sekali — semuanya vanilla.
-
----
-
-## struktur project
-
+```bash
+git clone https://github.com/SultanZhalifa/taskflow.git
+cd taskflow
+open index.html        # macOS
+start index.html       # Windows
+xdg-open index.html    # Linux
 ```
-TaskFlow/
-├── index.html         # struktur html utama
-├── style.css          # semua style, tema, dan animasi
-├── script.js          # logika app (crud, search, filter, d&d, export/import)
-├── .gitignore         # git ignore rules
-├── CONTRIBUTING.md    # panduan kontribusi
-├── GIT_GUIDE.md       # panduan git workflow (bahasa indonesia)
-└── README.md          # dokumentasi project (file ini)
+
+No install step is needed to run the app. If you want a local server with live reload, use the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension in VS Code, or:
+
+```bash
+npx serve .
+```
+
+### Linting and formatting
+
+The project includes ESLint and Prettier. To use them:
+
+```bash
+npm install
+npm run lint          # check for issues
+npm run lint:fix      # auto-fix where possible
+npm run format        # format all files
+npm run format:check  # check formatting without writing
 ```
 
 ---
 
-## keyboard shortcuts
+## Folder structure
 
-| shortcut | aksi |
+```
+taskflow/
+├── index.html              # App markup
+├── style.css               # Styles, animations, CSS variables
+├── script.js               # All application logic
+├── package.json            # Dev tooling (ESLint, Prettier)
+├── .eslintrc.json          # ESLint config
+├── .prettierrc             # Prettier config
+├── .editorconfig           # Editor settings
+├── LICENSE
+└── .github/
+    └── workflows/
+        └── ci.yml          # Lint checks on push/PR
+```
+
+---
+
+## Keyboard shortcuts
+
+| Shortcut | Action |
 |---|---|
-| `enter` | tambahin task baru / save task yang diedit |
-| `escape` | cancel editing / clear search |
-| `ctrl + k` | fokus ke search bar |
-| `double-click` | edit task secara inline |
+| `Enter` | Add task / save edit |
+| `Escape` | Cancel edit / clear search |
+| `Ctrl + K` | Focus search bar |
+| `Double-click` | Edit task inline |
 
 ---
 
-## anggota tim & pembagian tugas
+## Screenshots
 
-| nim | nama | peran | branch |
-|---|---|---|---|
-| 001202400200 | sultan zhalifunnas musyaffa | project lead & fitur lanjutan | `main`, `feature-super-maximal` |
-| 001202400069 | risly maria theresia worung | ui/ux design (tema b&w) | `feature-ui-design` |
-| 001202400040 | misha andalusia | logika js utama & drag/drop | `feature-add-task` |
-| 001202400054 | fathir barhouti awlya | task actions & animated placeholder | `feature-task-actions` |
+*Add screenshots or a demo GIF here.*
 
 ---
 
-## git workflow
+## Potential improvements
 
-project ini pake **feature-branch workflow** dengan pull requests dan code review:
+A few things that would genuinely make this better:
 
-1. **main branch** — kode yang udah production-ready
-2. **feature branches** — tiap fitur dikerjain terpisah
-3. **pull requests** — fitur di-review terus di-merge lewat pr
-4. **code reviews** — anggota tim saling review kode masing-masing
-
-### branch history
-
-```
-main
-├── feature-ui-design        <- struktur html & css tema b&w (risly)
-├── feature-add-task         <- add task, render dom, drag & drop (misha)
-├── feature-task-actions     <- edit, complete, delete, search, placeholder (fathir)
-└── feature-super-maximal    <- priority, export/import, fitur lanjutan (sultan)
-```
-
-> buat panduan git step-by-step (bahasa indonesia), cek [`GIT_GUIDE.md`](GIT_GUIDE.md).
+- **Due dates** — date picker per task with overdue indicators
+- **Task notes** — expandable description field per task
+- **Labels/categories** — group tasks by project or context
+- **Undo/redo** — history stack for task mutations
+- **PWA support** — service worker for offline use and installability
+- **Unit tests** — Vitest for core logic (add, filter, reorder)
+- **Cloud sync** — optional backend with user accounts
 
 ---
 
-## contributing
+## License
 
-baca [CONTRIBUTING.md](CONTRIBUTING.md) buat panduan soal:
-- penamaan branch
-- format commit message
-- testing
-- code style
-
----
-
-## license
-
-project ini dibuat buat keperluan tugas kuliah.
-
----
-
-<p align="center">
-  dibuat sama <b>tim taskflow</b>
-</p>
+[MIT](LICENSE)
