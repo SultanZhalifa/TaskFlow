@@ -94,9 +94,7 @@ function addTask(text, priority) {
     const trimmedText = text.trim();
     if (!trimmedText) return;
 
-    const isDuplicate = tasks.some(
-        (t) => t.text.toLowerCase() === trimmedText.toLowerCase()
-    );
+    const isDuplicate = tasks.some((t) => t.text.toLowerCase() === trimmedText.toLowerCase());
 
     if (isDuplicate) {
         showToast('A task with that name already exists.', 'warning');
@@ -219,9 +217,7 @@ function getFilteredTasks() {
     }
 
     if (searchQuery) {
-        filtered = filtered.filter((t) =>
-            t.text.toLowerCase().includes(searchQuery)
-        );
+        filtered = filtered.filter((t) => t.text.toLowerCase().includes(searchQuery));
     }
 
     return filtered;
@@ -413,7 +409,9 @@ function createTaskElement(task) {
             </div>
         `;
 
-        li.querySelector('input[type="checkbox"]').addEventListener('change', () => toggleTask(task.id));
+        li.querySelector('input[type="checkbox"]').addEventListener('change', () =>
+            toggleTask(task.id)
+        );
         li.querySelector('.task-text').addEventListener('dblclick', () => startEditTask(task.id));
         li.querySelector('.edit-btn').addEventListener('click', () => startEditTask(task.id));
         li.querySelector('.delete-btn').addEventListener('click', () => deleteTask(task.id));

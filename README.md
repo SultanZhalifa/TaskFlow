@@ -20,21 +20,25 @@ The goal was to build something genuinely useful using only the web platform: no
 ## Features
 
 **Task management**
+
 - Add, complete, edit, and delete tasks
 - Priority levels: low, medium, high
 - Duplicate detection on task creation
 
 **Organization**
+
 - Filter by All / Active / Completed
 - Real-time search with text highlighting
 - Drag and drop reordering
 
 **Data**
+
 - Persistent storage via `localStorage`
 - Export tasks to JSON
 - Import tasks from a JSON backup
 
 **UI**
+
 - Responsive layout for mobile and desktop
 - Dark mode via `prefers-color-scheme`
 - Toast notifications for user feedback
@@ -44,14 +48,14 @@ The goal was to build something genuinely useful using only the web platform: no
 
 ## Tech stack
 
-| | |
-|---|---|
-| HTML5 | Structure and accessibility |
-| CSS3 | Styling, animations, CSS custom properties |
-| JavaScript ES6+ | App logic, DOM, Drag & Drop API |
-| localStorage API | Client-side persistence |
-| FileReader API | JSON import/export |
-| Google Fonts (Inter) | Typography |
+|                      |                                            |
+| -------------------- | ------------------------------------------ |
+| HTML5                | Structure and accessibility                |
+| CSS3                 | Styling, animations, CSS custom properties |
+| JavaScript ES6+      | App logic, DOM, Drag & Drop API            |
+| localStorage API     | Client-side persistence                    |
+| FileReader API       | JSON import/export                         |
+| Google Fonts (Inter) | Typography                                 |
 
 ---
 
@@ -108,18 +112,18 @@ taskflow/
 
 ## Keyboard shortcuts
 
-| Shortcut | Action |
-|---|---|
-| `Enter` | Add task / save edit |
-| `Escape` | Cancel edit / clear search |
-| `Ctrl + K` | Focus search bar |
-| `Double-click` | Edit task inline |
+| Shortcut       | Action                     |
+| -------------- | -------------------------- |
+| `Enter`        | Add task / save edit       |
+| `Escape`       | Cancel edit / clear search |
+| `Ctrl + K`     | Focus search bar           |
+| `Double-click` | Edit task inline           |
 
 ---
 
 ## Screenshots
 
-*Add screenshots or a demo GIF here.*
+_Add screenshots or a demo GIF here._
 
 ---
 
