@@ -1,5 +1,12 @@
-// TaskFlow — Smart Task Manager
-// Main Application Logic
+import {
+    createTask,
+    filterTasks,
+    escapeHtml,
+    escapeAttr,
+    highlightSearch,
+    formatDueDate,
+    isOverdue,
+} from './taskUtils.js';
 
 // ============================================
 // Constants & Configuration
@@ -48,6 +55,7 @@ const searchInput = document.getElementById('search-input');
 const searchClearBtn = document.getElementById('search-clear-btn');
 const toastContainer = document.getElementById('toast-container');
 const prioritySelect = document.getElementById('priority-select');
+const dueDateInput = document.getElementById('due-date-input');
 
 const countAll = document.getElementById('count-all');
 const countActive = document.getElementById('count-active');
@@ -76,21 +84,7 @@ function showToast(message, type = 'success') {
 // Task Operations
 // ============================================
 
-function generateId() {
-    return Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
-}
-
-function createTask(text, priority = 'medium') {
-    return {
-        id: generateId(),
-        text: text.trim(),
-        completed: false,
-        priority,
-        createdAt: new Date().toISOString(),
-    };
-}
-
-function addTask(text, priority) {
+function addTask(text, priority, dueDate) {
     const trimmedText = text.trim();
     if (!trimmedText) return;
 
@@ -101,12 +95,13 @@ function addTask(text, priority) {
         return;
     }
 
-    const task = createTask(trimmedText, priority);
+    const task = createTask(trimmedText, priority, dueDate || null);
     tasks.unshift(task);
     saveTasks();
     renderTasks();
     taskInput.value = '';
     prioritySelect.value = 'medium';
+    dueDateInput.value = '';
     taskInput.focus();
     showToast(`Added: "${trimmedText}"`, 'success');
 }
@@ -202,27 +197,6 @@ function clearSearch() {
 // Filtering
 // ============================================
 
-function getFilteredTasks() {
-    let filtered;
-
-    switch (currentFilter) {
-        case 'active':
-            filtered = tasks.filter((t) => !t.completed);
-            break;
-        case 'completed':
-            filtered = tasks.filter((t) => t.completed);
-            break;
-        default:
-            filtered = [...tasks];
-    }
-
-    if (searchQuery) {
-        filtered = filtered.filter((t) => t.text.toLowerCase().includes(searchQuery));
-    }
-
-    return filtered;
-}
-
 function setFilter(filter) {
     currentFilter = filter;
     filterButtons.forEach((btn) => {
@@ -247,7 +221,10 @@ function saveTasks() {
 function loadTasks() {
     try {
         const stored = localStorage.getItem(STORAGE_KEY);
-        if (stored) tasks = JSON.parse(stored);
+        if (stored) {
+            // Normalize: ensure all tasks have the dueDate field
+            tasks = JSON.parse(stored).map((t) => ({ dueDate: null, ...t }));
+        }
     } catch (error) {
         console.error('Failed to load tasks:', error);
         tasks = [];
@@ -335,6 +312,15 @@ function handleDragEnd(e) {
 // Rendering
 // ============================================
 
+function buildDueDateHtml(task) {
+    if (!task.dueDate || task.completed) return '';
+    const overdue = isOverdue(task.dueDate);
+    const label = overdue
+        ? `Overdue: ${formatDueDate(task.dueDate)}`
+        : `Due ${formatDueDate(task.dueDate)}`;
+    return `<span class="task-due-date${overdue ? ' overdue' : ''}">${label}</span>`;
+}
+
 function createTaskElement(task) {
     const li = document.createElement('li');
     li.className = `task-item${task.completed ? ' completed' : ''}`;
@@ -390,8 +376,11 @@ function createTaskElement(task) {
                 </span>
             </label>
             <span class="task-text" title="Double-click to edit">
-                ${task.priority ? `<span class="task-priority priority-${task.priority}">${task.priority}</span>` : ''}
-                ${highlightSearch(escapeHtml(task.text))}
+                <span class="task-text-main">
+                    ${task.priority ? `<span class="task-priority priority-${task.priority}">${task.priority}</span>` : ''}
+                    ${highlightSearch(escapeHtml(task.text), searchQuery)}
+                </span>
+                ${buildDueDateHtml(task)}
             </span>
             <div class="task-actions">
                 <button class="edit-btn" aria-label="Edit task" title="Edit task">
@@ -420,33 +409,8 @@ function createTaskElement(task) {
     return li;
 }
 
-function highlightSearch(text) {
-    if (!searchQuery) return text;
-    const regex = new RegExp(`(${escapeRegex(searchQuery)})`, 'gi');
-    return text.replace(regex, '<mark class="search-highlight">$1</mark>');
-}
-
-function escapeRegex(str) {
-    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-
-function escapeHtml(text) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-}
-
-function escapeAttr(text) {
-    return text
-        .replace(/&/g, '&amp;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;');
-}
-
 function renderTasks() {
-    const filteredTasks = getFilteredTasks();
+    const filteredTasks = filterTasks(tasks, currentFilter, searchQuery);
     taskList.innerHTML = '';
     filteredTasks.forEach((task) => taskList.appendChild(createTaskElement(task)));
     updateEmptyState(filteredTasks.length);
@@ -589,7 +553,7 @@ function importTasksFromJSON(e) {
                 }
             }
 
-            tasks = importedData;
+            tasks = importedData.map((t) => ({ dueDate: null, ...t }));
             saveTasks();
             renderTasks();
             const label = tasks.length === 1 ? 'task' : 'tasks';
@@ -615,7 +579,7 @@ function importTasksFromJSON(e) {
 
 taskForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    addTask(taskInput.value, prioritySelect.value);
+    addTask(taskInput.value, prioritySelect.value, dueDateInput.value);
 });
 
 filterButtons.forEach((btn) => {

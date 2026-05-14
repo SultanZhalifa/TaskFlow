@@ -2,6 +2,7 @@
 
 A client-side task manager built with vanilla HTML, CSS, and JavaScript. No frameworks, no build step, no dependencies.
 
+![CI](https://github.com/SultanZhalifa/TaskFlow/actions/workflows/ci.yml/badge.svg)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
@@ -23,6 +24,7 @@ The goal was to build something genuinely useful using only the web platform: no
 
 - Add, complete, edit, and delete tasks
 - Priority levels: low, medium, high
+- Optional due dates with overdue indicators
 - Duplicate detection on task creation
 
 **Organization**
@@ -83,6 +85,7 @@ The project includes ESLint and Prettier. To use them:
 
 ```bash
 npm install
+npm test              # run unit tests
 npm run lint          # check for issues
 npm run lint:fix      # auto-fix where possible
 npm run format        # format all files
@@ -97,15 +100,17 @@ npm run format:check  # check formatting without writing
 taskflow/
 ├── index.html              # App markup
 ├── style.css               # Styles, animations, CSS variables
-├── script.js               # All application logic
-├── package.json            # Dev tooling (ESLint, Prettier)
+├── script.js               # App logic and DOM wiring
+├── taskUtils.js            # Pure logic functions (testable)
+├── script.test.js          # Unit tests (Vitest)
+├── package.json            # Dev tooling (ESLint, Prettier, Vitest)
 ├── .eslintrc.json          # ESLint config
 ├── .prettierrc             # Prettier config
 ├── .editorconfig           # Editor settings
 ├── LICENSE
 └── .github/
     └── workflows/
-        └── ci.yml          # Lint checks on push/PR
+        └── ci.yml          # Lint, format, and test checks on push/PR
 ```
 
 ---
@@ -131,7 +136,6 @@ _Add screenshots or a demo GIF here._
 
 A few things that would genuinely make this better:
 
-- **Due dates** — date picker per task with overdue indicators
 - **Task notes** — expandable description field per task
 - **Labels/categories** — group tasks by project or context
 - **Undo/redo** — history stack for task mutations

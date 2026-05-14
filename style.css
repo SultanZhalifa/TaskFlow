@@ -367,6 +367,54 @@ body {
     transform: scale(0.95);
 }
 
+/* ---------- Task Options Row ---------- */
+.task-options {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.task-options .priority-wrapper {
+    flex-shrink: 0;
+}
+
+.due-date-input {
+    flex: 1;
+    padding: 10px 14px;
+    background: var(--surface);
+    border: 1px solid transparent;
+    border-radius: var(--radius-pill);
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 0.82rem;
+    outline: none;
+    cursor: pointer;
+    transition: var(--transition-normal);
+}
+
+.due-date-input:focus {
+    border-color: var(--accent-primary);
+    background: var(--bg-secondary);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+/* ---------- Due Date Display ---------- */
+.task-text-main {
+    display: block;
+}
+
+.task-due-date {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 3px;
+}
+
+.task-due-date.overdue {
+    color: var(--danger);
+    font-weight: 500;
+}
+
 /* ---------- Filter Bar ---------- */
 .filter-bar {
     display: flex;

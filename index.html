@@ -122,17 +122,6 @@
                             placeholder=""
                             autocomplete="off"
                         />
-                        <div class="priority-wrapper">
-                            <select
-                                id="priority-select"
-                                class="priority-select"
-                                aria-label="Task priority"
-                            >
-                                <option value="low">Low</option>
-                                <option value="medium" selected>Medium</option>
-                                <option value="high">High</option>
-                            </select>
-                        </div>
                         <button type="submit" class="add-btn" aria-label="Add task">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -149,6 +138,25 @@
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                             </svg>
                         </button>
+                    </div>
+                    <div class="task-options">
+                        <div class="priority-wrapper">
+                            <select
+                                id="priority-select"
+                                class="priority-select"
+                                aria-label="Task priority"
+                            >
+                                <option value="low">Low</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                        <input
+                            type="date"
+                            id="due-date-input"
+                            class="due-date-input"
+                            aria-label="Due date (optional)"
+                        />
                     </div>
                 </form>
 
@@ -265,6 +273,6 @@
         <!-- Toast Container -->
         <div id="toast-container" class="toast-container" aria-live="polite"></div>
 
-        <script src="script.js"></script>
+        <script type="module" src="script.js"></script>
     </body>
 </html>
