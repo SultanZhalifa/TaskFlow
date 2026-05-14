@@ -61,7 +61,12 @@ html {
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family:
+        'Inter',
+        -apple-system,
+        BlinkMacSystemFont,
+        'Segoe UI',
+        sans-serif;
     background: var(--bg-primary);
     color: var(--text-primary);
     min-height: 100vh;
@@ -128,7 +133,6 @@ body {
 }
 
 @keyframes floatCircle {
-
     0%,
     100% {
         transform: translate(0, 0) scale(1);
@@ -189,19 +193,8 @@ body {
 .logo-icon {
     font-size: 1.4rem;
     color: var(--text-primary);
-    animation: sparkle 4s ease-in-out infinite;
-}
-
-@keyframes sparkle {
-
-    0%,
-    100% {
-        transform: rotate(0deg) scale(1);
-    }
-
-    50% {
-        transform: rotate(15deg) scale(1.1);
-    }
+    display: flex;
+    align-items: center;
 }
 
 .logo h1 {
@@ -258,7 +251,7 @@ body {
     box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
 }
 
-.search-input:focus~.search-icon {
+.search-input:focus ~ .search-icon {
     color: var(--text-primary);
 }
 
@@ -329,7 +322,9 @@ body {
     appearance: none;
     -webkit-appearance: none;
     padding: 14px 34px 14px 16px;
-    background: var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23666666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") no-repeat right 12px center;
+    background: var(--surface)
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23666666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")
+        no-repeat right 12px center;
     border: 1px solid transparent;
     border-radius: var(--radius-pill);
     color: var(--text-primary);
@@ -370,6 +365,54 @@ body {
 
 .add-btn:active {
     transform: scale(0.95);
+}
+
+/* ---------- Task Options Row ---------- */
+.task-options {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.task-options .priority-wrapper {
+    flex-shrink: 0;
+}
+
+.due-date-input {
+    flex: 1;
+    padding: 10px 14px;
+    background: var(--surface);
+    border: 1px solid transparent;
+    border-radius: var(--radius-pill);
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 0.82rem;
+    outline: none;
+    cursor: pointer;
+    transition: var(--transition-normal);
+}
+
+.due-date-input:focus {
+    border-color: var(--accent-primary);
+    background: var(--bg-secondary);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+/* ---------- Due Date Display ---------- */
+.task-text-main {
+    display: block;
+}
+
+.task-due-date {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 3px;
+}
+
+.task-due-date.overdue {
+    color: var(--danger);
+    font-weight: 500;
 }
 
 /* ---------- Filter Bar ---------- */
@@ -535,7 +578,7 @@ body {
     transition: var(--transition-normal);
 }
 
-.task-checkbox input:checked+.checkmark {
+.task-checkbox input:checked + .checkmark {
     background: var(--accent-primary);
     border-color: var(--accent-primary);
 }
@@ -548,7 +591,7 @@ body {
     transition: var(--transition-fast);
 }
 
-.task-checkbox input:checked+.checkmark svg {
+.task-checkbox input:checked + .checkmark svg {
     opacity: 1;
     transform: scale(1);
 }
@@ -693,7 +736,6 @@ body {
 }
 
 @keyframes bounce {
-
     0%,
     100% {
         transform: translateY(0);
@@ -845,13 +887,18 @@ kbd {
     line-height: 1.3;
 }
 
-/* Toast types — all use dark pill style */
-.toast.toast-success,
-.toast.toast-danger,
-.toast.toast-info,
-.toast.toast-warning {
-    background: var(--accent-primary);
-    border-left: none;
+/* Toast types — colored left border for visual differentiation */
+.toast-success {
+    border-left: 3px solid var(--success);
+}
+.toast-danger {
+    border-left: 3px solid var(--danger);
+}
+.toast-warning {
+    border-left: 3px solid var(--warning);
+}
+.toast-info {
+    border-left: 3px solid var(--info);
 }
 
 /* ---------- Credit ---------- */
@@ -863,6 +910,93 @@ kbd {
     position: relative;
     z-index: 1;
     letter-spacing: 0.3px;
+}
+
+/* ---------- Drag Handle ---------- */
+.drag-handle {
+    cursor: grab;
+    color: var(--text-muted);
+    opacity: 0.4;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    transition: opacity var(--transition-fast);
+    user-select: none;
+}
+
+.task-item:hover .drag-handle {
+    opacity: 0.65;
+}
+
+.task-item.dragging {
+    opacity: 0.35;
+}
+
+.task-item.drag-above {
+    border-top: 2px solid var(--accent-primary) !important;
+}
+
+.task-item.drag-below {
+    border-bottom: 2px solid var(--accent-primary) !important;
+}
+
+/* ---------- Search Highlight ---------- */
+mark.search-highlight {
+    background: rgba(0, 0, 0, 0.12);
+    color: inherit;
+    border-radius: 2px;
+    padding: 0 2px;
+}
+
+/* ---------- Edit Mode Hint ---------- */
+.edit-hint {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.edit-hint span {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* ---------- Dark Mode ---------- */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-primary: #111111;
+        --bg-secondary: #1a1a1a;
+        --surface: #1e1e1e;
+        --surface-hover: #262626;
+        --surface-active: #2e2e2e;
+
+        --text-primary: #f0f0f0;
+        --text-secondary: #a0a0a0;
+        --text-muted: #5a5a5a;
+        --text-inverse: #111111;
+
+        --accent-primary: #f0f0f0;
+        --accent-hover: #d4d4d4;
+        --accent-light: rgba(255, 255, 255, 0.08);
+
+        --card-bg: #1a1a1a;
+        --card-border: rgba(255, 255, 255, 0.08);
+        --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.4);
+        --card-shadow-hover: 0 2px 8px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.5);
+    }
+
+    .bg-circle-1,
+    .bg-circle-2,
+    .bg-circle-3 {
+        background: #ffffff;
+        opacity: 0.03;
+    }
+
+    mark.search-highlight {
+        background: rgba(255, 255, 255, 0.15);
+    }
 }
 
 /* ---------- Responsive ---------- */
@@ -919,5 +1053,3 @@ kbd {
         display: none;
     }
 }
-
-/* Responsive design improvements - v1.1 */
