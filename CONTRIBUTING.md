@@ -10,11 +10,11 @@ npm install
 
 ## Branch naming
 
-| Prefix | Use |
-|---|---|
-| `feature/<name>` | New features |
-| `fix/<name>` | Bug fixes |
-| `docs/<name>` | Documentation changes |
+| Prefix           | Use                   |
+| ---------------- | --------------------- |
+| `feature/<name>` | New features          |
+| `fix/<name>`     | Bug fixes             |
+| `docs/<name>`    | Documentation changes |
 
 Examples: `feature/due-dates`, `fix/drag-drop-reorder`, `docs/update-readme`
 
