@@ -104,7 +104,7 @@ taskflow/
 ├── taskUtils.js            # Pure logic functions (testable)
 ├── script.test.js          # Unit tests (Vitest)
 ├── package.json            # Dev tooling (ESLint, Prettier, Vitest)
-├── .eslintrc.json          # ESLint config
+├── eslint.config.js        # ESLint config (flat)
 ├── .prettierrc             # Prettier config
 ├── .editorconfig           # Editor settings
 ├── LICENSE
